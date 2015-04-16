@@ -1,0 +1,34 @@
+{
+  "name": "sigh-mocha",
+  "version": "0.0.1",
+  "description": "Sigh plugin for running mocha in a subprocess",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "lib/index",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sighjs/sigh-mocha.git"
+  },
+  "keywords": [
+    "build",
+    "assets",
+    "pipeline",
+    "sigh-plugin",
+    "mocha"
+  ],
+  "author": "James Pike <github@chilon.net>",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/sighjs/sigh-mocha/issues"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "sigh": "0.*",
+    "mocha": "2.*"
+  },
+  "devDependencies": {
+    "babel": "~5.1.10",
+    "sigh": "~0.8.11"
+  }
+}
