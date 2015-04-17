@@ -22,7 +22,11 @@
   "bugs": {
     "url": "https://github.com/sighjs/sigh-mocha/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bluebird": "~2.9.24",
+    "glob": "~5.0.5",
+    "lodash": "~3.7.0"
+  },
   "peerDependencies": {
     "sigh": "0.*",
     "mocha": "2.*"
