@@ -1,6 +1,6 @@
-export default function(op, opts = {}) {
-  var { Bacon } = op
+import { Bacon } from 'sigh-core'
 
+export default function(op, opts = {}) {
   var mochaProc = op.procPool.prepare(opts => {
     var Mocha = require('mocha')
     var Promise = require('bluebird')
@@ -12,13 +12,15 @@ export default function(op, opts = {}) {
     delete opts.files
 
     return () => {
+      var log = require('sigh-core').log
+
       Object.keys(require.cache).forEach(key => {
         if (! initRequireCache[key])
           delete require.cache[key]
       })
       var mocha = new Mocha(_.clone(opts))
 
-      console.log('run mocha tests %s', process.pid)
+      log('mocha: run tests in process %s', process.pid)
       return glob(files).then(fileList => {
         fileList.forEach(file => mocha.addFile(file))
 
@@ -34,10 +36,11 @@ export default function(op, opts = {}) {
   }, opts, { processLimit: 2 })
 
   return op.stream.flatMapLatest(events => {
+    // TODO: log message if process was killed
     mochaProc.kill()
 
     return Bacon.fromPromise(mochaProc().then(nFailures => {
-      return nFailures > 0 ? new Bacon.Error(`${nFailures} tests failed`) : events
+      return nFailures > 0 ? new Bacon.Error(`mocha: ${nFailures} tests failed`) : events
     }))
   })
 }
