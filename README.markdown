@@ -19,3 +19,7 @@ module.exports = function(pipelines) {
 ```
 
 You can pass an object containing mocha options as the first parameter to `mocha`.
+
+## TODO
+
+ * Improve with domains based on [gult-mocha](https://github.com/sindresorhus/gulp-mocha/blob/master/index.js).
