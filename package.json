@@ -23,17 +23,17 @@
     "url": "https://github.com/sighjs/sigh-mocha/issues"
   },
   "dependencies": {
-    "bluebird": "~2.9.24",
-    "glob": "~5.0.5",
-    "lodash": "~3.7.0",
+    "bluebird": "^2.9.24",
+    "glob": "^5.0.5",
+    "lodash": "^3.7.0",
     "sigh-core": "^0.11.0"
   },
   "peerDependencies": {
     "sigh": ">=0.11.0",
-    "mocha": "2.*"
+    "mocha": "2"
   },
   "devDependencies": {
-    "babel": "~5.1.10",
+    "babel": "^5.1.10",
     "mocha": "^2.2.4",
     "sigh": "^0.11.0"
   }
