@@ -28,7 +28,7 @@ export default function(op, opts = {}) {
       })
       .then(nFailures => {
         // console.log('finish mocha tests', process.pid)
-        return process.pid
+        return nFailures
       })
     }
   }, opts, { processLimit: 2 })
@@ -36,6 +36,8 @@ export default function(op, opts = {}) {
   return op.stream.flatMapLatest(events => {
     mochaProc.kill()
 
-    return Bacon.fromPromise(mochaProc().then(() => events))
+    return Bacon.fromPromise(mochaProc().then(nFailures => {
+      return nFailures > 0 ? new Bacon.Error(`${nFailures} tests failed`) : events
+    }))
   })
 }
