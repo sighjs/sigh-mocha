@@ -1,4 +1,4 @@
-var glob, babel, write
+var glob, babel, write, babel
 
 module.exports = function(pipelines) {
   pipelines['source'] = [
