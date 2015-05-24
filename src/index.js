@@ -1,4 +1,4 @@
-import { Bacon } from 'sigh-core'
+import { Bacon, log } from 'sigh-core'
 
 export default function(op, opts = {}) {
   var mochaProc = op.procPool.prepare(opts => {
@@ -36,8 +36,9 @@ export default function(op, opts = {}) {
   }, opts, { processLimit: 2 })
 
   return op.stream.flatMapLatest(events => {
-    // TODO: log message if process was killed
-    mochaProc.kill()
+    var killed = mochaProc.kill()
+    if (killed && killed.length)
+      log.important('killed mocha process: %s', killed.join(', '))
 
     return Bacon.fromPromise(mochaProc().then(nFailures => {
       return nFailures > 0 ? new Bacon.Error(`mocha: ${nFailures} tests failed`) : events

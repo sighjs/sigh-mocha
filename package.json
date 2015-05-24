@@ -1,6 +1,6 @@
 {
   "name": "sigh-mocha",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sigh plugin for running mocha in a subprocess",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,7 +26,7 @@
     "bluebird": "^2.9.24",
     "glob": "^5.0.5",
     "lodash": "^3.7.0",
-    "sigh-core": "^0.11.0"
+    "sigh-core": "^0.11.6"
   },
   "peerDependencies": {
     "mocha": "2"
