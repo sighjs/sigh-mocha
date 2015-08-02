@@ -18,7 +18,7 @@ module.exports = function(pipelines) {
 }
 ```
 
-You can pass an object containing mocha options as the first parameter to `mocha`.
+You can pass an object containing mocha options as the first parameter to the `mocha` API's `Mocha` constructor. The [documentation can be found here](https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically).
 
 ## TODO
 
