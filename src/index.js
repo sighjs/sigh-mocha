@@ -7,7 +7,7 @@ export default function(op, opts = {}) {
     var _ = require('lodash')
     var glob = Promise.promisify(require('glob'))
 
-    var files = opts.files
+    var { files } = opts
     var initRequireCache = _.clone(require.cache)
     delete opts.files
 
